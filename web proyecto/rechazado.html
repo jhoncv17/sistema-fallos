@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esperando Aprobación</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #3498db;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Icono animado de carga -->
+        <img src="/web proyecto/images/hacker.gif" alt="Cargando" class="icon">
+        <h1>Solicitud Rechazada</h1>
+        <p>Lo sentimos, tu solicitud ha sido rechazada. No perteneces a la entidad.</p>
+        <a href="inicio-sesion.php" class="button">Volver al Login</a>
+    </div>
+
+    <script>
+        async function verificarEstado() {
+            try {
+                const userId = /* Aquí debes definir la variable userId, por ejemplo: */ '123'; 
+                const response = await fetch(`verificar_estado.php?user_id=${userId}`);
+                const estado = await response.text();
+
+                if (estado === 'activo') {
+                    new Notification('¡Felicidades!', {
+                        body: 'Tu cuenta ha sido aprobada.',
+                        icon: 'aprobado.png'
+                    });
+                    window.location.href = 'dashboard.php';
+                } else if (estado === 'denegado') {
+                    new Notification('Lo sentimos', {
+                        body: 'Tu cuenta ha sido denegada.',
+                        icon: 'denegado.png'
+                    });
+                    window.location.href = 'rechazado.html';
+                }
+            } catch (error) {
+                console.error('Error al verificar el estado:', error);
+            }
+        }
+
+        function pedirPermisoNotificaciones() {
+            if (Notification.permission !== "granted") {
+                Notification.requestPermission();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            pedirPermisoNotificaciones();
+            setInterval(verificarEstado, 5000); // Verifica cada 5 segundos
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1c1c1c;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinea el contenido en la parte superior */
+    min-height: 100vh;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px; /* Añade un margen superior para separarlo del borde superior */
+}
+
+form {
+    width: 400px;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+select,
+textarea,
+input[type="file"],
+button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+select,
+textarea,
+input[type="file"] {
+    background-color: #444;
+    color: #fff;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+.file-upload {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.file-upload input[type='file'] {
+    position: absolute;
+    font-size: 100px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+.file-upload i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+.titulo {
+    text-align: center;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Espacio entre el icono y el botón */
+}
+
+.file-upload input[type="file"] {
+    display: none; /* Oculta el input de tipo file */
+}
+
+.file-upload i {
+    margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+body {
+    background-image: url('images/importancia\ de\ la\ ciberseguridad\ en\ el\ rpa.png'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Ajustar el tamaño de la imagen para cubrir todo el fondo */
+    background-position: center; /* Centrar la imagen en el fondo */
+    background-repeat: no-repeat; /* Evitar que la imagen se repita */
+}
+
+
